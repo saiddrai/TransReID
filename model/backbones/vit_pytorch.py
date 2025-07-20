@@ -27,7 +27,12 @@ from itertools import repeat
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from torch._six import container_abcs
+
+# Handle PyTorch version compatibility for container_abcs
+try:
+    from torch._six import container_abcs
+except ImportError:
+    import collections.abc as container_abcs
 
 
 # From PyTorch internals
